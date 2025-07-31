@@ -1,0 +1,162 @@
+/* Basic styling and magical castle theme colors */
+:root {
+    --primary-blue: #a3c4f3;
+    --accent-blue: #007bff;
+    --magical-gold: #FFD700;
+    --text-color: #fff;
+    --background-color: #2b3a67;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'MedievalSharp', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+.countdown-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 2px solid var(--magical-gold);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+h1#title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    color: var(--primary-blue);
+}
+
+#countdown-timer {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.timer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--accent-blue);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--magical-gold);
+}
+
+.timer-box span {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--magical-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.timer-box .label {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+#reveal-message {
+    display: none; /* Initially hide this section */
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+#reveal-message.active {
+    display: block; /* Show when the countdown is over */
+}
+
+#gift-image {
+    width: 400px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* This will crop the image to fit without stretching it */
+    border-radius: 10px;
+    margin-top: 1rem;
+    border: 3px solid var(--magical-gold);
+}
+
+/* Optional: Add a subtle background image of a castle */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://static.uwalls.com/products/137000/137735/w04015v1p_600.webp'); /* Replace with your own image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Initially hide the celebration container */
+#day-of-celebration {
+    display: none;
+}
+
+#day-of-celebration.active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* This hides confetti and balloons that fly off-screen */
+}
+
+/* Base styling for balloons */
+.balloon-1, .balloon-2, .balloon-3 {
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    bottom: -150px; /* Start below the screen */
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin: bottom;
+    box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.1);
+    animation: fly-up 10s infinite;
+}
+
+.balloon-1 {
+    left: 10%;
+    background: #ff5733; /* Orange */
+    animation-delay: 1s;
+}
+
+.balloon-2 {
+    left: 50%;
+    background: #33aaff; /* Blue */
+    animation-delay: 3s;
+}
+
+.balloon-3 {
+    left: 80%;
+    background: #c70039; /* Red */
+    animation-delay: 2s;
+}
+
+/* Base styling for confetti */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--magical-gold); /* Using our theme color */
+    opacity: 0;
+    animation: celebrate-confetti 8s forwards;
+}
+
+/* Animation for balloons flying up */
+@keyframes fly-up {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-150vh) rotate(720deg); } /* Fly off the top of the screen */
+}
+
+/* Animation for confetti flying and fading out */
