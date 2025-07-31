@@ -1,6 +1,6 @@
 // Set the date and time of the gift arrival
 // Format: "Month Day, Year HH:MM:SS"
-const giftDate = new Date("July 31, 2025 14:03:00").getTime();
+const giftDate = new Date("August 10, 2025 00:00:00").getTime();
 
 // Get the HTML elements for the countdown
 const titleEl = document.getElementById("title");
@@ -33,22 +33,21 @@ const countdownInterval = setInterval(function() {
     minutesEl.innerHTML = minutes < 10 ? `0${minutes}` : minutes;
     secondsEl.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
 
-    // --- REVISED LOGIC FOR THE TITLE ---
-    // If there is more than a day left, show the original message
+    
     if (days > 0) {
         titleEl.innerHTML = "Your Magical Gift is on its way!";
     }
-    // If it's the final day, change the message and start the celebration
+    
     else {
         titleEl.innerHTML = "Your gifts are here!";
         dayOfCelebrationEl.classList.add("active");
     }
 
-    // If the countdown is completely finished, stop everything and reveal the gift
+    
     if (distance < 0) {
         clearInterval(countdownInterval);
         countdownTimer.style.display = "none";
-        titleEl.style.display = "none"; // Hide the title completely for the final reveal
+        titleEl.style.display = "none"; 
         revealMessage.classList.add("active");
     }
 }, 1000);
