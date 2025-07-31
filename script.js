@@ -1,6 +1,6 @@
 // Set the date and time of the gift arrival
 // Format: "Month Day, Year HH:MM:SS"
-const giftDate = new Date("July 31, 2025 14:03:00").getTime();
+const giftDate = new Date("August 10, 2025 00:00:00").getTime();
 
 // Get the HTML elements for the countdown
 const titleEl = document.getElementById("title");
